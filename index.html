@@ -1,0 +1,1105 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ABOUT ME! - Let's Introduce Ourselves!</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* === CSS VARIABLES & THEME === */
+        :root {
+            --primary-blue: #7DD3FC; /* Sky Blue */
+            --primary-yellow: #FDE047; /* Bright Yellow */
+            --primary-purple: #C4B5FD; /* Pastel Purple */
+            --primary-coral: #FDA4AF; /* Coral Pink */
+            --primary-mint: #6EE7B7; /* Mint Green */
+            --bg-color: #F0F9FF;
+            --text-dark: #334155;
+            --text-light: #FFFFFF;
+            --shadow-soft: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-3d: 0 8px 0px rgba(0,0,0,0.15);
+            --shadow-3d-hover: 0 4px 0px rgba(0,0,0,0.15);
+        }
+
+        /* === GLOBAL RESET & TYPOGRAPHY === */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Fredoka', sans-serif;
+            color: var(--text-dark);
+        }
+
+        /* === UTILITY CLASSES === */
+        .hidden { display: none !important; }
+        .text-center { text-align: center; }
+        .mt-4 { margin-top: 1rem; }
+        .mb-4 { margin-bottom: 1rem; }
+        .flex { display: flex; }
+        .justify-center { justify-content: center; }
+        .align-center { align-items: center; }
+        
+        /* === BUTTONS === */
+        .btn-3d {
+            display: inline-block;
+            padding: 12px 24px;
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            background-color: var(--primary-yellow);
+            border: 3px solid var(--text-dark);
+            border-radius: 16px;
+            cursor: pointer;
+            box-shadow: var(--shadow-3d);
+            transition: all 0.1s ease-in-out;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-decoration: none;
+        }
+
+        .btn-3d:active {
+            transform: translateY(4px);
+            box-shadow: var(--shadow-3d-hover);
+        }
+
+        .btn-blue { background-color: var(--primary-blue); }
+        .btn-purple { background-color: var(--primary-purple); }
+        .btn-mint { background-color: var(--primary-mint); }
+        .btn-coral { background-color: var(--primary-coral); }
+
+        .btn-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            padding: 0;
+        }
+
+        /* === LAYOUT & SECTIONS === */
+        .app-container {
+            width: 100%;
+            min-height: 100vh;
+            position: relative;
+            padding-bottom: 2rem;
+        }
+
+        section {
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Top Navigation / Header */
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 2px dashed var(--primary-blue);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-controls {
+            display: flex;
+            gap: 10px;
+        }
+
+        /* === 1. SPLASH SCREEN === */
+        #splash-screen {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-purple));
+            color: white;
+            text-align: center;
+        }
+
+        .splash-logo {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 4rem;
+            color: var(--primary-yellow);
+            text-shadow: 3px 3px 0 var(--text-dark);
+            margin-bottom: 0.5rem;
+            animation: bounceIn 1s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        .splash-sub {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            background: var(--text-dark);
+            padding: 5px 15px;
+            border-radius: 20px;
+            display: inline-block;
+        }
+
+        .splash-img {
+            width: 200px;
+            height: 200px;
+            background-color: white;
+            border-radius: 50%;
+            border: 4px solid var(--text-dark);
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            box-shadow: var(--shadow-soft);
+        }
+
+        /* === 2. DASHBOARD === */
+        .welcome-card {
+            background: white;
+            border: 3px solid var(--text-dark);
+            border-radius: 24px;
+            padding: 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            box-shadow: 8px 8px 0px var(--primary-blue);
+            position: relative;
+        }
+        
+        .welcome-avatar {
+            width: 80px;
+            height: 80px;
+            background: var(--primary-yellow);
+            border: 2px solid var(--text-dark);
+            border-radius: 50%;
+            position: absolute;
+            top: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .menu-card {
+            background: white;
+            border: 3px solid var(--text-dark);
+            border-radius: 20px;
+            padding: 1.5rem;
+            text-align: center;
+            cursor: pointer;
+            box-shadow: 0 8px 0px rgba(0,0,0,0.1);
+            transition: all 0.2s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 0px rgba(0,0,0,0.15);
+        }
+        
+        .menu-card:active {
+            transform: translateY(2px);
+            box-shadow: 0 4px 0px rgba(0,0,0,0.1);
+        }
+
+        .menu-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        /* Menu Card Colors */
+        .card-materi { background-color: var(--primary-mint); }
+        .card-simulasi { background-color: var(--primary-yellow); }
+        .card-praktikum { background-color: var(--primary-coral); }
+        .card-game { background-color: var(--primary-purple); }
+        .card-lkpd { background-color: var(--primary-blue); }
+        .card-evaluasi { background-color: #FCA5A5; } /* Light Red */
+        .card-pengembang { background-color: #D8B4E2; }
+        .card-petunjuk { background-color: #FDE68A; }
+
+        .menu-title {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        /* === 3. CONTENT PAGES COMMON === */
+        .page-header {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding: 1rem;
+            background: white;
+            border: 3px solid var(--text-dark);
+            border-radius: 16px;
+            box-shadow: 5px 5px 0px var(--primary-purple);
+        }
+
+        .content-card {
+            background: white;
+            border: 2px solid var(--text-dark);
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: var(--shadow-soft);
+        }
+
+        /* === MATERI === */
+        .materi-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 1rem;
+            justify-content: center;
+        }
+        
+        .tab-btn {
+            padding: 8px 16px;
+            border: 2px solid var(--text-dark);
+            border-radius: 20px;
+            background: white;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        
+        .tab-btn.active {
+            background: var(--primary-blue);
+            color: var(--text-dark);
+        }
+
+        .vocab-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            border-bottom: 1px dashed #ccc;
+        }
+
+        .listen-btn {
+            background: var(--primary-yellow);
+            border: 2px solid var(--text-dark);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* === FORM / PRAKTIKUM === */
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid var(--text-dark);
+            border-radius: 8px;
+            font-family: 'Nunito', sans-serif;
+        }
+
+        #id-card-result {
+            margin-top: 2rem;
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-purple));
+            padding: 20px;
+            border-radius: 20px;
+            border: 3px solid var(--text-dark);
+            color: var(--text-dark);
+            display: none;
+        }
+        .id-card-inner {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        /* === GAME === */
+        .game-area {
+            background: var(--bg-color);
+            border: 3px dashed var(--text-dark);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        .match-container {
+            display: flex;
+            justify-content: space-around;
+            gap: 20px;
+        }
+        .word-col { display: flex; flex-direction: column; gap: 10px; width: 45%;}
+        
+        .word-btn {
+            padding: 10px;
+            border: 2px solid var(--text-dark);
+            border-radius: 8px;
+            background: white;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        .word-btn.selected { background: var(--primary-yellow); }
+        .word-btn.matched { background: var(--primary-mint); cursor: default; opacity: 0.7;}
+
+        /* === EVALUASI === */
+        .quiz-option {
+            display: block;
+            width: 100%;
+            text-align: left;
+            padding: 12px 20px;
+            margin-bottom: 10px;
+            background: white;
+            border: 2px solid var(--text-dark);
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.2s;
+        }
+        .quiz-option:hover { background: var(--primary-blue); }
+        .quiz-option.correct { background: var(--primary-mint); }
+        .quiz-option.wrong { background: var(--primary-coral); }
+        
+        /* Print Styles */
+        @media print {
+            .no-print { display: none !important; }
+            .top-nav { display: none; }
+            body { background: white; }
+            #id-card-result { display: block !important; page-break-inside: avoid; }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .menu-grid { grid-template-columns: 1fr 1fr; }
+            .splash-logo { font-size: 3rem; }
+        }
+        @media (max-width: 480px) {
+            .menu-grid { grid-template-columns: 1fr; }
+            section { padding: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- AUDIO ELEMENTS -->
+    <audio id="clickSound" src="data:audio/wav;base64,UklGRigAAABXQVZFZm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YQQAAAAAAAEAAQ==" preload="auto"></audio>
+    <audio id="correctSound" src="data:audio/wav;base64,UklGRigAAABXQVZFZm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YQQAAAAAAAEAAQ==" preload="auto"></audio>
+    <!-- Note: Dummy base64 audio used to prevent load errors. Web Speech API will handle actual voice -->
+
+    <!-- TOP NAVIGATION (Hidden on Splash) -->
+    <nav id="top-nav" class="top-nav hidden no-print">
+        <div class="nav-logo" style="font-family: 'Fredoka'; font-weight: bold; font-size: 1.2rem; color: var(--primary-blue); text-shadow: 1px 1px 0 #333;">
+            <i class="fa-solid fa-star"></i> ABOUT ME!
+        </div>
+        <div class="nav-controls">
+            <button class="btn-3d btn-icon btn-blue" onclick="toggleMute()" id="muteBtn" title="Sound On/Off">
+                <i class="fa-solid fa-volume-high"></i>
+            </button>
+            <button class="btn-3d btn-icon btn-coral" onclick="showSection('dashboard')" id="homeBtn" title="Back to Dashboard">
+                <i class="fa-solid fa-house"></i>
+            </button>
+        </div>
+    </nav>
+
+    <div class="app-container">
+        
+        <!-- ================= 1. SPLASH SCREEN ================= -->
+        <section id="splash-screen">
+            <div class="splash-img">
+                👦🏽👧🏻
+            </div>
+            <h1 class="splash-logo">ABOUT ME!</h1>
+            <div class="splash-sub">Let's Introduce Ourselves!</div>
+            <p class="mb-4" style="font-weight: 600;">SMP NEGERI 2 KALIANDA</p>
+            <button class="btn-3d" onclick="startApp()">
+                START LEARNING <i class="fa-solid fa-play ml-2"></i>
+            </button>
+        </section>
+
+        <!-- ================= 2. DASHBOARD ================= -->
+        <section id="dashboard" class="hidden">
+            <div class="welcome-card mt-4">
+                <div class="welcome-avatar">👩‍🏫</div>
+                <h2 style="margin-top: 20px;">Welcome, Students!</h2>
+                <p>Materi: About Me - Kelas VII (Fase D)</p>
+            </div>
+
+            <div class="menu-grid">
+                <div class="menu-card card-materi" onclick="showSection('materi')">
+                    <div class="menu-icon"><i class="fa-solid fa-book-open"></i></div>
+                    <div class="menu-title">1. MATERI</div>
+                </div>
+                <div class="menu-card card-simulasi" onclick="showSection('simulasi')">
+                    <div class="menu-icon"><i class="fa-solid fa-comments"></i></div>
+                    <div class="menu-title">2. SIMULASI</div>
+                </div>
+                <div class="menu-card card-praktikum" onclick="showSection('praktikum')">
+                    <div class="menu-icon"><i class="fa-solid fa-id-card"></i></div>
+                    <div class="menu-title">3. PRAKTIKUM</div>
+                </div>
+                <div class="menu-card card-game" onclick="initGame(); showSection('game')">
+                    <div class="menu-icon"><i class="fa-solid fa-gamepad"></i></div>
+                    <div class="menu-title">4. GAME</div>
+                </div>
+                <div class="menu-card card-lkpd" onclick="showSection('lkpd')">
+                    <div class="menu-icon"><i class="fa-solid fa-pencil"></i></div>
+                    <div class="menu-title">5. LKPD</div>
+                </div>
+                <div class="menu-card card-evaluasi" onclick="initQuiz(); showSection('evaluasi')">
+                    <div class="menu-icon"><i class="fa-solid fa-list-check"></i></div>
+                    <div class="menu-title">6. EVALUASI</div>
+                </div>
+                <div class="menu-card card-pengembang" onclick="showSection('pengembang')">
+                    <div class="menu-icon"><i class="fa-solid fa-user-tie"></i></div>
+                    <div class="menu-title">7. PENGEMBANG</div>
+                </div>
+                <div class="menu-card card-petunjuk" onclick="showSection('petunjuk')">
+                    <div class="menu-icon"><i class="fa-solid fa-circle-question"></i></div>
+                    <div class="menu-title">8. PETUNJUK</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= 3. MATERI ================= -->
+        <section id="materi" class="hidden">
+            <div class="page-header">
+                <h2>📖 LEARN ABOUT ME</h2>
+            </div>
+            
+            <div class="materi-tabs" id="materiTabs">
+                <button class="tab-btn active" onclick="showSubMateri(1)">Greeting</button>
+                <button class="tab-btn" onclick="showSubMateri(2)">Self Intro</button>
+                <button class="tab-btn" onclick="showSubMateri(3)">Info</button>
+                <button class="tab-btn" onclick="showSubMateri(4)">Hobbies</button>
+            </div>
+
+            <div class="content-card">
+                <!-- Sub Materi 1 -->
+                <div id="submateri-1" class="submateri-content">
+                    <h3>Greeting and Leave-Taking (Salam dan Perpisahan)</h3>
+                    <p class="mb-4">Mari belajar cara memberi salam dan berpamitan!</p>
+                    
+                    <div class="vocab-item">
+                        <div>
+                            <strong>Hello! / Hi!</strong><br>
+                            <small class="text-gray-500">Halo / Hai</small>
+                        </div>
+                        <button class="listen-btn" onclick="speakEn('Hello! Hi!')"><i class="fa-solid fa-volume-high"></i></button>
+                    </div>
+                    <div class="vocab-item">
+                        <div>
+                            <strong>Good morning!</strong><br>
+                            <small>Selamat pagi</small>
+                        </div>
+                        <button class="listen-btn" onclick="speakEn('Good morning!')"><i class="fa-solid fa-volume-high"></i></button>
+                    </div>
+                    <div class="vocab-item">
+                        <div>
+                            <strong>How are you?</strong><br>
+                            <small>Apa kabarmu?</small>
+                        </div>
+                        <button class="listen-btn" onclick="speakEn('How are you?')"><i class="fa-solid fa-volume-high"></i></button>
+                    </div>
+                    <div class="vocab-item">
+                        <div>
+                            <strong>I am fine, thank you.</strong><br>
+                            <small>Saya baik-baik saja, terima kasih.</small>
+                        </div>
+                        <button class="listen-btn" onclick="speakEn('I am fine, thank you.')"><i class="fa-solid fa-volume-high"></i></button>
+                    </div>
+                    <div class="vocab-item border-0">
+                        <div>
+                            <strong>Goodbye! See you!</strong><br>
+                            <small>Selamat tinggal! Sampai jumpa!</small>
+                        </div>
+                        <button class="listen-btn" onclick="speakEn('Goodbye! See you!')"><i class="fa-solid fa-volume-high"></i></button>
+                    </div>
+                </div>
+
+                <!-- Sub Materi 2 -->
+                <div id="submateri-2" class="submateri-content hidden">
+                    <h3>Introducing Myself (Memperkenalkan Diri)</h3>
+                    <div class="vocab-item">
+                        <div><strong>My name is Budi.</strong><br><small>Nama saya Budi.</small></div>
+                        <button class="listen-btn" onclick="speakEn('My name is Budi.')"><i class="fa-solid fa-volume-high"></i></button>
+                    </div>
+                    <div class="vocab-item">
+                        <div><strong>I am twelve years old.</strong><br><small>Umur saya 12 tahun.</small></div>
+                        <button class="listen-btn" onclick="speakEn('I am twelve years old.')"><i class="fa-solid fa-volume-high"></i></button>
+                    </div>
+                    <div class="vocab-item">
+                        <div><strong>I live in Kalianda.</strong><br><small>Saya tinggal di Kalianda.</small></div>
+                        <button class="listen-btn" onclick="speakEn('I live in Kalianda.')"><i class="fa-solid fa-volume-high"></i></button>
+                    </div>
+                </div>
+
+                <!-- Sub Materi 3 -->
+                <div id="submateri-3" class="submateri-content hidden">
+                    <h3>Personal Information Vocabulary</h3>
+                    <div class="vocab-item">
+                        <div><strong>Name</strong> - <small>Nama</small></div>
+                        <button class="listen-btn" onclick="speakEn('Name')"><i class="fa-solid fa-volume-high"></i></button>
+                    </div>
+                    <div class="vocab-item">
+                        <div><strong>Age</strong> - <small>Umur</small></div>
+                        <button class="listen-btn" onclick="speakEn('Age')"><i class="fa-solid fa-volume-high"></i></button>
+                    </div>
+                    <div class="vocab-item">
+                        <div><strong>School</strong> - <small>Sekolah</small></div>
+                        <button class="listen-btn" onclick="speakEn('School')"><i class="fa-solid fa-volume-high"></i></button>
+                    </div>
+                </div>
+
+                 <!-- Sub Materi 4 -->
+                 <div id="submateri-4" class="submateri-content hidden">
+                    <h3>Hobbies and Interests</h3>
+                    <div class="vocab-item">
+                        <div><strong>My hobby is reading.</strong><br><small>Hobi saya membaca.</small></div>
+                        <button class="listen-btn" onclick="speakEn('My hobby is reading.')"><i class="fa-solid fa-volume-high"></i></button>
+                    </div>
+                    <div class="vocab-item">
+                        <div><strong>I like playing football.</strong><br><small>Saya suka bermain sepak bola.</small></div>
+                        <button class="listen-btn" onclick="speakEn('I like playing football.')"><i class="fa-solid fa-volume-high"></i></button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center">
+                <button class="btn-3d btn-mint" onclick="speakId('Ini adalah materi pembelajaran. Silakan klik tombol suara untuk mendengarkan pengucapan bahasa Inggris.')">
+                    <i class="fa-solid fa-info-circle"></i> Info
+                </button>
+            </div>
+        </section>
+
+        <!-- ================= 4. SIMULASI ================= -->
+        <section id="simulasi" class="hidden">
+            <div class="page-header">
+                <h2>💬 LET'S PRACTICE SPEAKING</h2>
+            </div>
+            
+            <div class="content-card text-center" style="background: var(--primary-blue);">
+                <div style="font-size: 3rem; margin-bottom: 10px;">👧🏻 👨🏽</div>
+                <h3>Meeting a New Friend</h3>
+                <p>Klik tombol untuk mendengar dialog</p>
+                
+                <div class="mt-4" style="background: white; padding: 15px; border-radius: 12px; text-align: left;">
+                    <p><strong>Anna:</strong> Hello! What is your name?</p>
+                    <p class="text-gray-500 text-sm mb-2"><small>Halo! Siapa namamu?</small></p>
+                    
+                    <p><strong>Budi:</strong> Hi! My name is Budi.</p>
+                    <p class="text-gray-500 text-sm mb-2"><small>Hai! Nama saya Budi.</small></p>
+                    
+                    <p><strong>Anna:</strong> Nice to meet you, Budi.</p>
+                    <p class="text-gray-500 text-sm mb-2"><small>Senang bertemu denganmu, Budi.</small></p>
+                    
+                    <p><strong>Budi:</strong> Nice to meet you too.</p>
+                    <p class="text-gray-500 text-sm"><small>Senang bertemu denganmu juga.</small></p>
+                </div>
+                
+                <button class="btn-3d mt-4" onclick="speakEn('Hello! What is your name? Hi! My name is Budi. Nice to meet you, Budi. Nice to meet you too.')">
+                    <i class="fa-solid fa-play"></i> Listen Full Dialog
+                </button>
+            </div>
+        </section>
+
+        <!-- ================= 5. PRAKTIKUM ================= -->
+        <section id="praktikum" class="hidden">
+            <div class="page-header">
+                <h2>🎨 MY INTRODUCTION STUDIO</h2>
+                <p>Create your Digital Profile Card!</p>
+            </div>
+            
+            <div class="content-card no-print">
+                <div class="form-group">
+                    <label>What is your name?</label>
+                    <input type="text" id="p_name" placeholder="e.g. Rina">
+                </div>
+                <div class="form-group">
+                    <label>How old are you? (Age)</label>
+                    <input type="number" id="p_age" placeholder="12">
+                </div>
+                <div class="form-group">
+                    <label>Where do you live? (City)</label>
+                    <input type="text" id="p_city" placeholder="Kalianda">
+                </div>
+                <div class="form-group">
+                    <label>What is your hobby?</label>
+                    <input type="text" id="p_hobby" placeholder="Reading">
+                </div>
+                <button class="btn-3d btn-mint w-full" style="width: 100%;" onclick="generateProfile()">
+                    GENERATE MY PROFILE ✨
+                </button>
+            </div>
+
+            <!-- Profile Result -->
+            <div id="id-card-result">
+                <div class="id-card-inner">
+                    <div style="font-size: 4rem; margin-bottom: 10px;">🧑‍🎓</div>
+                    <h3 id="res_name" style="font-size: 1.5rem; color: var(--primary-blue);">Name</h3>
+                    <p style="font-weight: bold; margin-bottom: 15px;">Student of SMPN 2 Kalianda</p>
+                    
+                    <div style="text-align: left; padding: 10px; background: var(--bg-color); border-radius: 8px;">
+                        <p id="res_text">Hello, my name is ...</p>
+                    </div>
+                    
+                    <div class="mt-4 no-print flex justify-center gap-2">
+                        <button class="btn-3d btn-yellow" onclick="listenProfile()">
+                            <i class="fa-solid fa-volume-high"></i> Listen
+                        </button>
+                        <button class="btn-3d btn-blue" onclick="window.print()">
+                            <i class="fa-solid fa-print"></i> Print
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= 6. GAME ================= -->
+        <section id="game" class="hidden">
+            <div class="page-header">
+                <h2>🎮 PLAY AND LEARN</h2>
+                <p>Match the Words (Cocokkan Kata)</p>
+            </div>
+            
+            <div class="content-card game-area">
+                <p class="mb-4">Score: <span id="game-score" style="font-weight: bold; color: green; font-size: 1.2rem;">0</span>/4</p>
+                <div class="match-container">
+                    <!-- Column English -->
+                    <div class="word-col" id="col-en">
+                        <button class="word-btn en-word" data-id="1">Name</button>
+                        <button class="word-btn en-word" data-id="2">Age</button>
+                        <button class="word-btn en-word" data-id="3">City</button>
+                        <button class="word-btn en-word" data-id="4">School</button>
+                    </div>
+                    <!-- Column Indonesian -->
+                    <div class="word-col" id="col-id">
+                        <!-- Shuffled in JS -->
+                        <button class="word-btn id-word" data-id="3">Kota</button>
+                        <button class="word-btn id-word" data-id="1">Nama</button>
+                        <button class="word-btn id-word" data-id="4">Sekolah</button>
+                        <button class="word-btn id-word" data-id="2">Umur</button>
+                    </div>
+                </div>
+                <div id="game-msg" class="mt-4 font-bold" style="min-height: 24px;"></div>
+                <button class="btn-3d mt-4 hidden" id="game-reset-btn" onclick="initGame()">Play Again</button>
+            </div>
+        </section>
+
+        <!-- ================= 7. LKPD ================= -->
+        <section id="lkpd" class="hidden">
+            <div class="page-header">
+                <h2>📝 STUDENT WORKSHEET</h2>
+                <p>My Personal Identity</p>
+            </div>
+            
+            <div class="content-card no-print">
+                <p>Lengkapi kalimat berikut sesuai dirimu:</p>
+                <div class="form-group mt-4">
+                    <label>1. Hello, my name is <input type="text" id="lkpd_1" style="display:inline; width:200px; padding:5px;" placeholder="..."></label>
+                </div>
+                <div class="form-group">
+                    <label>2. I am <input type="text" id="lkpd_2" style="display:inline; width:100px; padding:5px;" placeholder="..."> years old.</label>
+                </div>
+                <button class="btn-3d btn-blue mt-4" onclick="alert('Jawaban disimpan sementara!')">Save Answers</button>
+                <button class="btn-3d mt-4" onclick="window.print()">Print LKPD</button>
+            </div>
+        </section>
+
+        <!-- ================= 8. EVALUASI ================= -->
+        <section id="evaluasi" class="hidden">
+            <div class="page-header">
+                <h2>✅ TEST YOUR KNOWLEDGE</h2>
+                <p>Question <span id="q-num">1</span> of 5</p>
+            </div>
+            
+            <div class="content-card" id="quiz-container">
+                <h3 id="question-text" class="mb-4">Loading question...</h3>
+                <div id="options-container">
+                    <!-- Options injected here via JS -->
+                </div>
+            </div>
+
+            <div class="content-card hidden text-center" id="quiz-result">
+                <h2>Quiz Completed!</h2>
+                <div style="font-size: 4rem; margin: 10px 0;">🏆</div>
+                <h3 class="mb-4">Your Score: <span id="final-score" style="color:var(--primary-blue); font-size:2rem;">0</span></h3>
+                <p id="score-msg" class="font-bold mb-4" style="font-size: 1.2rem;"></p>
+                <button class="btn-3d btn-mint" onclick="initQuiz()">Retry Test</button>
+            </div>
+        </section>
+
+        <!-- ================= 9. PENGEMBANG ================= -->
+        <section id="pengembang" class="hidden">
+            <div class="page-header">
+                <h2>👩‍💻 ABOUT DEVELOPER</h2>
+            </div>
+            
+            <div class="content-card text-center" style="border-color: var(--primary-coral);">
+                <div style="font-size: 5rem; margin-bottom: 10px;">👩‍🏫</div>
+                <h2 style="color: var(--primary-blue);">HANNY RAHMA HESARANI, S.Pd., M.Pd.</h2>
+                <p style="font-weight: bold; color: gray;">Guru Bahasa Inggris</p>
+                <p class="mb-4" style="font-weight: bold;">SMP NEGERI 2 KALIANDA</p>
+                
+                <div style="background: var(--bg-color); padding: 15px; border-radius: 12px; text-align: left;">
+                    <p>"Media Pembelajaran Interaktif <strong>ABOUT ME!</strong> dikembangkan sebagai sarana pembelajaran Bahasa Inggris yang menarik, interaktif, dan menyenangkan untuk membantu peserta didik kelas VII dalam memahami serta mempraktikkan ungkapan perkenalan diri dalam Bahasa Inggris."</p>
+                </div>
+                <p class="mt-4"><small>&copy; 2026 - Kurikulum Merdeka Fase D</small></p>
+            </div>
+        </section>
+
+        <!-- ================= 10. PETUNJUK ================= -->
+        <section id="petunjuk" class="hidden">
+            <div class="page-header">
+                <h2>❓ HOW TO USE</h2>
+            </div>
+            
+            <div class="content-card">
+                <ol style="margin-left: 20px; line-height: 2;">
+                    <li>Klik <strong>START LEARNING</strong> di halaman depan.</li>
+                    <li>Pilih menu di <strong>Dashboard</strong>.</li>
+                    <li>Di menu <strong>Materi</strong>, pelajari teks dan klik tombol <i class="fa-solid fa-volume-high"></i> untuk mendengar pengucapan.</li>
+                    <li>Di menu <strong>Simulasi</strong>, dengarkan contoh percakapan.</li>
+                    <li>Di menu <strong>Praktikum</strong>, isi data diri untuk membuat profil digitalmu lalu <strong>Print</strong>.</li>
+                    <li>Mainkan <strong>Game</strong> mencocokkan kata untuk melatih ingatan.</li>
+                    <li>Kerjakan <strong>Evaluasi</strong> untuk mengetes pemahamanmu.</li>
+                    <li>Pastikan volume perangkatmu menyala!</li>
+                </ol>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- MAIN JAVASCRIPT -->
+    <script>
+        // === GLOBAL STATE ===
+        let soundEnabled = true;
+        let synth = window.speechSynthesis;
+
+        // === SOUND PLAYERS (Dummy beep for UI interaction) ===
+        function playClickSound() {
+            if(!soundEnabled) return;
+            // Simple web audio api beep since we don't have external files
+            try {
+                const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                const oscillator = audioCtx.createOscillator();
+                const gainNode = audioCtx.createGain();
+                oscillator.type = 'sine';
+                oscillator.frequency.setValueAtTime(600, audioCtx.currentTime); // value in hertz
+                gainNode.gain.setValueAtTime(0.1, audioCtx.currentTime);
+                oscillator.connect(gainNode);
+                gainNode.connect(audioCtx.destination);
+                oscillator.start();
+                setTimeout(() => { oscillator.stop(); }, 100);
+            } catch(e) {}
+        }
+
+        function toggleMute() {
+            soundEnabled = !soundEnabled;
+            const btn = document.getElementById('muteBtn');
+            if(soundEnabled) {
+                btn.innerHTML = '<i class="fa-solid fa-volume-high"></i>';
+                btn.classList.replace('btn-coral', 'btn-blue');
+            } else {
+                btn.innerHTML = '<i class="fa-solid fa-volume-xmark"></i>';
+                btn.classList.replace('btn-blue', 'btn-coral');
+                synth.cancel(); // Stop speaking if muted
+            }
+        }
+
+        // === WEB SPEECH API (TEXT TO SPEECH) ===
+        function speak(text, lang) {
+            if (!soundEnabled) return;
+            if (synth.speaking) synth.cancel(); // stop current
+            
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = lang;
+            utterance.rate = 0.9; // slightly slower for learning
+            synth.speak(utterance);
+        }
+
+        function speakEn(text) { speak(text, 'en-US'); }
+        function speakId(text) { speak(text, 'id-ID'); }
+
+        // === NAVIGATION LOGIC ===
+        function startApp() {
+            playClickSound();
+            speakId('Selamat datang, siswa! Silakan pilih menu.');
+            showSection('dashboard');
+        }
+
+        function showSection(sectionId) {
+            playClickSound();
+            // Hide all sections
+            const sections = document.querySelectorAll('section');
+            sections.forEach(sec => sec.classList.add('hidden'));
+            
+            // Show target section
+            document.getElementById(sectionId).classList.remove('hidden');
+            window.scrollTo(0,0);
+
+            // Handle Top Nav visibility
+            const nav = document.getElementById('top-nav');
+            if (sectionId === 'splash-screen') {
+                nav.classList.add('hidden');
+            } else {
+                nav.classList.remove('hidden');
+            }
+
+            // Speak menu name (optional enhancement)
+            if(sectionId === 'materi') speakId('Menu Materi');
+        }
+
+        // === MATERI LOGIC ===
+        function showSubMateri(index) {
+            playClickSound();
+            // hide all
+            document.querySelectorAll('.submateri-content').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+            // show target
+            document.getElementById(`submateri-${index}`).classList.remove('hidden');
+            document.querySelectorAll('.tab-btn')[index-1].classList.add('active');
+        }
+
+        // === PRAKTIKUM LOGIC ===
+        let generatedProfileText = "";
+        function generateProfile() {
+            playClickSound();
+            const name = document.getElementById('p_name').value || 'Student';
+            const age = document.getElementById('p_age').value || '12';
+            const city = document.getElementById('p_city').value || 'Indonesia';
+            const hobby = document.getElementById('p_hobby').value || 'learning';
+
+            document.getElementById('res_name').innerText = name;
+            
+            generatedProfileText = `Hello, my name is ${name}. I am ${age} years old. I live in ${city}. My hobby is ${hobby}. Nice to meet you!`;
+            
+            document.getElementById('res_text').innerText = generatedProfileText;
+            document.getElementById('id-card-result').style.display = 'block';
+        }
+
+        function listenProfile() {
+            speakEn(generatedProfileText);
+        }
+
+        // === GAME LOGIC (MATCH THE WORDS) ===
+        let selectedEn = null;
+        let selectedId = null;
+        let gameScore = 0;
+        let matchesFound = 0;
+
+        function initGame() {
+            gameScore = 0;
+            matchesFound = 0;
+            selectedEn = null;
+            selectedId = null;
+            document.getElementById('game-score').innerText = '0';
+            document.getElementById('game-msg').innerText = '';
+            document.getElementById('game-msg').style.color = 'var(--text-dark)';
+            document.getElementById('game-reset-btn').classList.add('hidden');
+
+            document.querySelectorAll('.word-btn').forEach(btn => {
+                btn.classList.remove('selected', 'matched');
+                btn.onclick = () => handleWordClick(btn);
+            });
+        }
+
+        function handleWordClick(btn) {
+            playClickSound();
+            if(btn.classList.contains('matched')) return;
+
+            // Deselect logic within same column
+            if(btn.classList.contains('en-word')) {
+                document.querySelectorAll('.en-word').forEach(b => b.classList.remove('selected'));
+                btn.classList.add('selected');
+                selectedEn = btn;
+            } else {
+                document.querySelectorAll('.id-word').forEach(b => b.classList.remove('selected'));
+                btn.classList.add('selected');
+                selectedId = btn;
+            }
+
+            checkMatch();
+        }
+
+        function checkMatch() {
+            if(selectedEn && selectedId) {
+                if(selectedEn.dataset.id === selectedId.dataset.id) {
+                    // Match
+                    selectedEn.classList.add('matched');
+                    selectedEn.classList.remove('selected');
+                    selectedId.classList.add('matched');
+                    selectedId.classList.remove('selected');
+                    matchesFound++;
+                    gameScore++;
+                    document.getElementById('game-score').innerText = gameScore;
+                    document.getElementById('game-msg').innerText = "Correct! 🌟";
+                    document.getElementById('game-msg').style.color = "green";
+                    
+                    if(matchesFound === 4) {
+                        document.getElementById('game-msg').innerText = "You Won! Excellent! 🎉";
+                        document.getElementById('game-reset-btn').classList.remove('hidden');
+                        speakEn("Excellent");
+                    }
+                } else {
+                    // No match
+                    document.getElementById('game-msg').innerText = "Try again!";
+                    document.getElementById('game-msg').style.color = "red";
+                    selectedEn.classList.remove('selected');
+                    selectedId.classList.remove('selected');
+                }
+                selectedEn = null;
+                selectedId = null;
+            }
+        }
+
+        // === EVALUASI (QUIZ) LOGIC ===
+        const quizData = [
+            {
+                q: "What do you say when you meet someone in the morning?",
+                opts: ["Good night", "Good afternoon", "Good morning", "Goodbye"],
+                ans: 2
+            },
+            {
+                q: "A: How are you? \nB: ...",
+                opts: ["I am fine, thank you", "Nice to meet you", "My name is Budi", "I am 12 years old"],
+                ans: 0
+            },
+            {
+                q: "Translate to English: 'Nama saya Rina'",
+                opts: ["My hobby is Rina", "My name is Rina", "I am Rina", "She is Rina"],
+                ans: 1
+            },
+            {
+                q: "Where do you ... ? (I live in Kalianda)",
+                opts: ["name", "hobby", "school", "live"],
+                ans: 3
+            },
+            {
+                q: "What is your hobby?",
+                opts: ["I live in Jakarta", "My name is Ali", "My hobby is reading", "I am a student"],
+                ans: 2
+            }
+        ];
+
+        let currentQuestion = 0;
+        let quizScore = 0;
+
+        function initQuiz() {
+            currentQuestion = 0;
+            quizScore = 0;
+            document.getElementById('quiz-container').classList.remove('hidden');
+            document.getElementById('quiz-result').classList.add('hidden');
+            loadQuestion();
+        }
+
+        function loadQuestion() {
+            const qData = quizData[currentQuestion];
+            document.getElementById('q-num').innerText = (currentQuestion + 1);
+            document.getElementById('question-text').innerText = qData.q;
+            
+            const optsContainer = document.getElementById('options-container');
+            optsContainer.innerHTML = '';
+            
+            qData.opts.forEach((opt, index) => {
+                const btn = document.createElement('button');
+                btn.className = 'quiz-option';
+                btn.innerText = opt;
+                btn.onclick = () => checkAnswer(index, btn);
+                optsContainer.appendChild(btn);
+            });
+        }
+
+        function checkAnswer(selectedIndex, btn) {
+            playClickSound();
+            const correctIndex = quizData[currentQuestion].ans;
+            const allBtns = document.querySelectorAll('.quiz-option');
+            
+            // Disable clicks
+            allBtns.forEach(b => b.onclick = null);
+
+            if (selectedIndex === correctIndex) {
+                btn.classList.add('correct');
+                quizScore += 20; // 5 questions = 20 pts each
+            } else {
+                btn.classList.add('wrong');
+                allBtns[correctIndex].classList.add('correct');
+            }
+
+            setTimeout(() => {
+                currentQuestion++;
+                if (currentQuestion < quizData.length) {
+                    loadQuestion();
+                } else {
+                    showQuizResult();
+                }
+            }, 1000);
+        }
+
+        function showQuizResult() {
+            document.getElementById('quiz-container').classList.add('hidden');
+            document.getElementById('quiz-result').classList.remove('hidden');
+            document.getElementById('final-score').innerText = quizScore;
+            
+            let msg = "";
+            if (quizScore >= 90) msg = "EXCELLENT! 🌟";
+            else if (quizScore >= 80) msg = "VERY GOOD! 👍";
+            else if (quizScore >= 70) msg = "GOOD JOB! 🙂";
+            else msg = "KEEP LEARNING! 💪";
+            
+            document.getElementById('score-msg').innerText = msg;
+            
+            // Save to localStorage
+            try {
+                localStorage.setItem('aboutMe_lastScore', quizScore);
+            } catch(e) {}
+        }
+        
+        // Add event listeners to all main buttons for sound
+        document.addEventListener('DOMContentLoaded', () => {
+             document.querySelectorAll('.menu-card').forEach(card => {
+                 card.addEventListener('mouseenter', () => { if(soundEnabled){} /* hover sound optional */ });
+             });
+        });
+
+    </script>
+</body>
+</html>
